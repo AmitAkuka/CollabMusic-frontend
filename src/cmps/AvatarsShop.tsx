@@ -24,7 +24,9 @@ export const AvatarsShop = () => {
     const avatarsByCategory = AVATARS_LIST[avatarsCategory];
     const loadedImages = await Promise.all(
       avatarsByCategory.map(async (avatar: string) => {
+        console.log({ avatar })
         const loadedAvatarImage = await import(`../assets/img/${avatar}.png`);
+        console.log({ loadedImage: loadedAvatarImage.default})
         return loadedAvatarImage.default;
       })
     );

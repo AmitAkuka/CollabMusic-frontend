@@ -24,9 +24,9 @@ export const AvatarsShop = () => {
     const avatarsByCategory = AVATARS_LIST[avatarsCategory];
     const loadedImages = await Promise.all(
       avatarsByCategory.map(async (avatar: string) => {
-        console.log({ avatar })
+        console.log({ avatar });
         const loadedAvatarImage = await import(`../assets/img/${avatar}.png`);
-        console.log({ loadedImage: loadedAvatarImage.default})
+        console.log({ loadedImage: loadedAvatarImage.default });
         return loadedAvatarImage.default;
       })
     );
@@ -35,11 +35,15 @@ export const AvatarsShop = () => {
 
   const onSelectAvatar = async (avatarPath: string) => {
     try {
-      console.log({avatarPath})
-      const matches = avatarPath.match(/\/([^/]+)\.[^.]+$/);
+      console.log({ avatarPath });
+      //Fixing dynamic import on production - name is changing for the loaded assets.
+      const matches =
+        process.env.NODE_ENV === "production"
+          ? avatarPath.match(/\/assets\/([^-\s]+)/)
+          : avatarPath.match(/\/([^/]+)\.[^.]+$/);
       if (!matches || !loggedUser) return;
       const avatarName = matches[1];
-      console.log({avatarName})
+      console.log({ avatarName });
       await userService.updateAvatar(loggedUser, avatarName);
       dispatch(updateUserAvatar(avatarName));
     } catch (err) {

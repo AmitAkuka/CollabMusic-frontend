@@ -38,9 +38,7 @@ export const ResetPasword = () => {
       const decodedUserId = atob(id);
       const formData = new FormData(ev.target as HTMLFormElement);
       const formProps = Object.fromEntries(formData);
-      console.log({ formProps });
       const isValidate = checkInputValidation(formProps);
-      console.log({ isValidate });
       if (isValidate) {
         const { password } = formProps;
         const res = await userService.updatePassword(

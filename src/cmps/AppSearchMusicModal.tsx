@@ -49,7 +49,6 @@ export const AppSearchMusicModal = ({
             pageStart={1}
             loadMore={(page) => {
               if (page > 2) return;
-              console.log("load more!");
               queryYoutubeData(youtubeData.nextPageToken, page);
             }}
             hasMore={!!youtubeData.nextPageToken.length}

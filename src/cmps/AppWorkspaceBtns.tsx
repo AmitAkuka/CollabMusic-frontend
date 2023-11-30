@@ -81,7 +81,6 @@ export const AppWorkspaceBtns = () => {
         video: { ...selectedVideo, duration },
       };
       const updateEvent = { type: "add", data: newMusicQueue };
-      console.log("adding to queue", updateEvent);
       await roomService.updateMusicQueueByRoomId(ROOM_ID, updateEvent);
       setIsModalOpen(false);
     } catch (err) {

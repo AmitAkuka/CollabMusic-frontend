@@ -10,7 +10,6 @@ export const ShopPreview = ({
   onSelectAvatar,
 }: Props) => {
   const isUsedAvatar = avatarImg.indexOf(loggedUserAvatar) >= 0;
-  console.log({ avatarImg });
   return (
     <div className="shop-preview-main-container">
       <img src={avatarImg} alt="avatar-image" />

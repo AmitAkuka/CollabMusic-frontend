@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const QueuePreview = ({ queuePreview: normalizedQueue }: Props) => {
-  console.log(normalizedQueue);
   const { userId, username, avatar, estimatedQueueTime, isLoggedUser } =
     normalizedQueue;
 

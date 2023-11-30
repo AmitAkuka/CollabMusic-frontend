@@ -19,7 +19,6 @@ export const Login = () => {
         [loginWith]: formProps.identifyBy,
         password: formProps.password,
       } as UserCred;
-      console.log({loginCreds})
       const user = (await userService.login(loginCreds)) as User;
       dispatch(setUser(user));
       toastMsg("Logged in Successfully!");

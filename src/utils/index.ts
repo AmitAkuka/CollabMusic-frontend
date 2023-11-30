@@ -34,7 +34,6 @@ export const checkInputValidation = (formProps: {
   [key: string]: FormDataEntryValue;
 }) => {
   const { password, repeatPassword } = formProps;
-  console.log(typeof password);
   let message: string = "";
   if (password.length < 6 || repeatPassword.length < 6) {
     message = "Password must contain at least 6 characters";
@@ -72,12 +71,10 @@ export const getReactPlayerStyle = () => {
   const widthDiff = scale < 1 ? scale * 1.5 : scale * 0.687;
   const heightDiff = scale < 1 ? scale * 1.16 : scale * 0.665;
   const leftDiff = scale < 1 ? scale * 75 : scale * 0.5;
-  console.log({ widthDiff, heightDiff });
 
   const workspaceWidth = window.screen.width - 235;
   const width = workspaceWidth * (0.335 * widthDiff);
   const height = window.screen.height * (0.32 * heightDiff);
-  console.log({ playerHeight: height, playerWidth: width });
 
   return {
     width,

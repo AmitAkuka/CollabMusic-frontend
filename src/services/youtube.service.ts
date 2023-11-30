@@ -24,7 +24,6 @@ const onReqYoutubeData = async (
   } catch (err) {
     const errMsg = getErrorMessage(err);
     if (errMsg.indexOf("exceeded") >= 0) {
-      console.log("replacing api key to backup");
       currentUsedApiKey = YOUTUBE_API_KEY_2;
       const data: YoutubeData = await onReqYoutubeData(filterBy, nextPageToken);
       return data;

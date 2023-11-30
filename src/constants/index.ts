@@ -81,8 +81,8 @@ export const AVATARS_LIST: { [key: string]: string[] } = {
 };
 
 export const SPECIAL_CHARS_REGEX = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-export const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY_1;
-export const YOUTUBE_API_KEY_2 = process.env.REACT_APP_YOUTUBE_API_KEY_2;
+export const YOUTUBE_API_KEY = process.env.REACT_APP_YT_API_KEY;
+export const YOUTUBE_API_KEY_2 = process.env.REACT_APP_YT_API_KEY_BACKUP;
 export const YOUTUBE_SEARCH_URL =
   "https://www.googleapis.com/youtube/v3/search";
 export const YOUTUBE_INFO_URL =

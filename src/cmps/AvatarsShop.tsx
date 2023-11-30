@@ -36,7 +36,7 @@ export const AvatarsShop = () => {
       //Fixing dynamic import on production - name is changing for the loaded assets.
       const matches =
         process.env.NODE_ENV === "production"
-          ? avatarPath.match(/\/assets\/([^-\s]+)/)
+          ? avatarPath.match(/\/assets\/([^-\s]+-[^-\s]+)(?=-)/)
           : avatarPath.match(/\/([^/]+)\.[^.]+$/);
       if (!matches || !loggedUser) return;
       const avatarName = matches[1];

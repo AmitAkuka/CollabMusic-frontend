@@ -81,10 +81,8 @@ export const AVATARS_LIST: { [key: string]: string[] } = {
 };
 
 export const SPECIAL_CHARS_REGEX = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-// export const YOUTUBE_API_KEY = "AIzaSyDIdBNqqc22eFS7bwBoScBw97a_QM_YxKA";
-// export const YOUTUBE_API_KEY_2 = "AIzaSyArNzNzxQ3Vxrf3OSpZq2xhh9WoxopjQQ0";
-export const YOUTUBE_API_KEY = process.env.NODE_ENV === "production" ? process.env.YOUTUBE_API_KEY_1 : "AIzaSyDIdBNqqc22eFS7bwBoScBw97a_QM_YxKA";
-export const YOUTUBE_API_KEY_2 = process.env.NODE_ENV === "production" ? process.env.YOUTUBE_API_KEY_1 : "AIzaSyArNzNzxQ3Vxrf3OSpZq2xhh9WoxopjQQ0";
+export const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY_1;
+export const YOUTUBE_API_KEY_2 = process.env.REACT_APP_YOUTUBE_API_KEY_2;
 export const YOUTUBE_SEARCH_URL =
   "https://www.googleapis.com/youtube/v3/search";
 export const YOUTUBE_INFO_URL =

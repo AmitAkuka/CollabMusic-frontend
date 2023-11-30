@@ -1,7 +1,9 @@
-import Axios from "axios";
+import Axios, { AxiosError } from "axios";
 
 const BASE_URL =
-  process.env.NODE_ENV === "production" ? "https://collabmusic-backend-production.up.railway.app/api/" : "//localhost:3030/api/";
+  process.env.NODE_ENV === "production"
+    ? "https://collabmusic-backend-production.up.railway.app/api/"
+    : "//localhost:3030/api/";
 
 //WHEN BUILDING TO WINDOWS SERVER USE:
 // const BASE_URL =  '/api/'
@@ -39,9 +41,13 @@ async function ajax(endpoint: string, method = "GET", data = null) {
       `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`
     );
     console.dir(err);
-    if (err?.response && err?.response.status === 401) {
+    if (isAxiosError(err) && err.response && err.response.status === 401) {
       sessionStorage.clear();
     }
     throw err;
   }
+}
+
+function isAxiosError(error: any): error is AxiosError {
+  return error.isAxiosError === true;
 }

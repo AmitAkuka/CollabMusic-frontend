@@ -95,8 +95,10 @@ export const AppWorkspace = () => {
     };
     if (!playerRef.current || !isReady) return initialPlayerInfo;
 
-    const title =
-      playerRef.current?.player?.player?.player?.getVideoData()?.title;
+    //Had issues with the type of YoutubePlayer.
+    const title = (
+      playerRef.current as any
+    )?.player?.player?.player?.getVideoData()?.title;
     const totalDuration = playerRef.current?.getDuration();
     const currDuration = currentlyPlaying?.begginingTS
       ? getSecondsPassedFromTs(currentlyPlaying?.begginingTS)

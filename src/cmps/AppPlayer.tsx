@@ -29,9 +29,9 @@ type Props = {
   isPlaying: boolean;
   isMuted: boolean;
   volume: number;
-  setIsPlaying: (isPlaying: boolean) => void;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   setVolume: (volume: number) => void;
-  setIsMuted: (isMuted: boolean) => void;
+  setIsMuted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type AppPlayerHandle = {

@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { Video } from "@/types";
 
 type Props = {
-  setIsModalOpen: (isModalOpen: boolean) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleVideoSubmit: (selectedVideo: Video) => void;
 };
 

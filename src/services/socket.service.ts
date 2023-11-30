@@ -1,6 +1,6 @@
 import io, { Socket } from "socket.io-client";
 
-const baseUrl = process.env.NODE_ENV === "production" ? "" : "//localhost:3030";
+const baseUrl = process.env.NODE_ENV === "production" ? "https://collabmusic-backend-production.up.railway.app" : "//localhost:3030";
 
 export const socketService = createSocketService();
 

@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const BASE_URL =
-  process.env.NODE_ENV === "production" ? "/api/" : "//localhost:3030/api/";
+  process.env.NODE_ENV === "production" ? "https://collabmusic-backend-production.up.railway.app/api/" : "//localhost:3030/api/";
 
 //WHEN BUILDING TO WINDOWS SERVER USE:
 // const BASE_URL =  '/api/'

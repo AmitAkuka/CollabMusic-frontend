@@ -1,0 +1,86 @@
+.app-player-main-container {
+  display: flex;
+  position: fixed;
+  background-color: #212121;
+  bottom: 0;
+  padding: 15px;
+  color: white;
+  gap: 30px;
+  height: 85px;
+  transition: width 1s;
+  z-index: 9999;
+
+  &.full-width {
+    width: calc(100% - 70px);
+  }
+  &.chat-width {
+    width: calc(85% - 250px);
+  }
+
+  & > .song-info-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 50%;
+
+    & > p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+      
+      & > span{
+        color: gray;
+      }
+    }
+
+    & > .song-sub-info-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #787878;
+      font-weight: 600;
+      .progress-container {
+        width: 100%;
+        background-color: #717171;
+      }
+
+      .progress-bar {
+        width: 0;
+        height: 4px;
+        background-color: #24b5df;
+        transition: width 0.5s;
+        max-width: 100%;
+      }
+    }
+  }
+  & > .btns-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-basis: 50%;
+    & > button {
+      color: white;
+      border: none;
+      background-color: inherit;
+      &:nth-child(1) {
+        height: 20px;
+        width: 20px;
+      }
+      &:not(:nth-child(1)) {
+        height: 28px;
+        width: 28px;
+      }
+
+      & > img,
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    & > input {
+      cursor: pointer;
+    }
+  }
+}

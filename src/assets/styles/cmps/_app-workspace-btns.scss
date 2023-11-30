@@ -1,0 +1,104 @@
+.app-workspace-btns-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 400px;
+  bottom: 150px;
+  // padding-inline-end: 85px;
+
+  & > .play-song-container,
+  .song-rating-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000085;
+    // padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px 0px #ffffff50;
+    z-index: 2000;
+    min-width: 205px;
+  }
+  & > .play-song-container {
+    padding: 20px 25px;
+    gap: 15px;
+    & > button {
+      border: none;
+      background: #710350;
+      color: white;
+      display: flex;
+      text-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 5px;
+      padding: 8px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 2px 0px white;
+      & > img {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  & > .song-rating-container {
+    padding: 25px 40px;
+    & > .rating-btns-container {
+      display: flex;
+      // gap: 20px;
+      justify-content: space-around;
+      & > .like-btn,
+      .dislike-btn {
+        height: 28px;
+        width: 28px;
+        border: none;
+        background: none;
+        color: white;
+        & > svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      & > .like-btn.selected {
+        & > svg {
+          color: green;
+        }
+      }
+      & > .dislike-btn.selected {
+        & > svg {
+          color: red;
+        }
+      }
+    }
+
+    & > .rating-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      & > .vote-summary-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 25px;
+        color: white;
+      }
+      & > .progress-container {
+        display: flex;
+        width: 100%;
+        background-color: #717171;
+        height: 4px;
+        & > .likes-progress-container,
+        .dislikes-progress-container {
+          height: 4px;
+          max-width: 100%;
+          transition: width 0.5s;
+        }
+        & > .likes-progress-container {
+          background-color: green;
+        }
+        & > .dislikes-progress-container {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

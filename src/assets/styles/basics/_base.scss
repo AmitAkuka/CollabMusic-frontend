@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: whitesmoke;
+  // font-family: "Oswald";
+  font-family: 'Open-sans';
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+button{
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.8;
+  }
+}

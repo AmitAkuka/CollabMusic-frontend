@@ -1,0 +1,60 @@
+.sidebar-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-family: "Montserrat";
+  background-color: #0b090d;
+  color: white;
+  z-index: 9999;
+  min-width: 235px;
+  & > .sidebar-header-container {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    gap: 5px;
+    & > img {
+      height: 45px;
+      width: 45px;
+    }
+    & > h1 {
+      font-size: 1.5rem;
+
+      & > span {
+        color: #459efa;
+      }
+    }
+  }
+
+  & > .sidebar-btns-container {
+    height: 100%;
+    & > a {
+      display: flex;
+      align-items: center;
+      padding: 5px 12px;
+      gap: 20px;
+      // font-size: 1rem;
+      font-weight: 600;
+      &.active {
+        color: #24b7fb;
+        box-shadow: inset 3px 0px 0;
+      }
+      &:hover {
+        background-color: #212121;
+      }
+    }
+  }
+
+  & > .siderbar-footer-container {
+    background-color: #212121;
+    display: flex;
+    padding: 15px;
+    font-size: 0.8rem;
+    justify-content: space-between;
+    height: 10%;
+    min-height: 100px;
+    align-items: center;
+    & > svg {
+      cursor: pointer;
+    }
+  }
+}

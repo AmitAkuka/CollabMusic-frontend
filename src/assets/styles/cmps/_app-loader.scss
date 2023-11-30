@@ -1,0 +1,12 @@
+.app-loader-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  & > img {
+    height: 100px;
+    margin-bottom: 150px;
+  }
+}

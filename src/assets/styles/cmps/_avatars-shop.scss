@@ -1,0 +1,99 @@
+.avatars-shop-main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.92);
+  & > .avatars-shop-header-container {
+    color: white;
+    text-align: center;
+  }
+
+  & > .select-box-main-container {
+    position: relative;
+    display: flex;
+    width: 20em;
+    line-height: 2.6;
+    background-color: #282c35;
+    border-radius: 0.25em;
+    & > select {
+      height: 42px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background-color: #282c35;
+      background-image: none;
+      flex: 1;
+      padding: 0 0.5em;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1em;
+      font-family: "Open Sans", sans-serif;
+      &::-ms-expand {
+        display: none;
+      }
+      & > option {
+        color: #fff;
+        font-size: 1rem;
+      }
+    }
+    &::after {
+      content: "\1F86B";
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 0.9em;
+      background: #434a5b;
+      cursor: pointer;
+      pointer-events: none;
+      transition: 0.25s all ease;
+    }
+    &:hover::after {
+      color: white;
+    }
+  }
+
+  & > .shop-list-main-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: 25px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    & > .shop-preview-main-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: linear-gradient(to bottom, #21262c, #101318, #21262c);
+
+      & > button {
+        height: 30px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 700;
+
+        &.select-btn {
+          background: linear-gradient(to bottom, #24b7fb, #338eff, #2147ff);
+        }
+        &.used-btn {
+          background: linear-gradient(to bottom, #24b7fb, #338eff, #2147ff);
+        }
+      }
+    }
+  }
+}

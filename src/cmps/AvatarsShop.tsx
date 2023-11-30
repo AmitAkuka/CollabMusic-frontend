@@ -33,9 +33,11 @@ export const AvatarsShop = () => {
 
   const onSelectAvatar = async (avatarPath: string) => {
     try {
+      console.log({avatarPath})
       const matches = avatarPath.match(/\/([^/]+)\.[^.]+$/);
       if (!matches || !loggedUser) return;
       const avatarName = matches[1];
+      console.log({avatarName})
       await userService.updateAvatar(loggedUser, avatarName);
       dispatch(updateUserAvatar(avatarName));
     } catch (err) {

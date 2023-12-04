@@ -33,11 +33,13 @@ export const AvatarsShop = () => {
 
   const onSelectAvatar = async (avatarPath: string) => {
     try {
+      console.log({ avatarPath });
       //Fixing dynamic import on production - name is changing for the loaded assets.
       const matches =
-        process.env.NODE_ENV === "production"
-          ? avatarPath.match(/\/assets\/([^-\s]+-[^-\s]+)(?=-)/)
-          : avatarPath.match(/\/([^/]+)\.[^.]+$/);
+      process.env.NODE_ENV === "production"
+      ? avatarPath.match(/\/assets\/([^-\s]+-[^-\s]+)(?=-)/)
+      : avatarPath.match(/\/([^/]+)\.[^.]+$/);
+      console.log({ matches });
       if (!matches || !loggedUser) return;
       const avatarName = matches[1];
       await userService.updateAvatar(loggedUser, avatarName);

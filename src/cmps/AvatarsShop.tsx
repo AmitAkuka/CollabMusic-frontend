@@ -5,6 +5,8 @@ import { AVATARS_LIST } from "@/constants";
 import { SelectBox } from "./SelectBox";
 import { updateUserAvatar } from "@/store/user/userSlice";
 import { userService } from "@/services/user.service";
+import { AppLoader } from "./AppLoader";
+import { toastMsg } from "@/utils";
 
 export const AvatarsShop = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +15,7 @@ export const AvatarsShop = () => {
   const [loadedAvatarsImg, setLoadedAvatarsImg] = useState<string[] | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     loadAvatars();
@@ -33,24 +36,27 @@ export const AvatarsShop = () => {
 
   const onSelectAvatar = async (avatarPath: string) => {
     try {
-      console.log({ avatarPath });
-      //Fixing dynamic import on production - name is changing for the loaded assets.
+      setIsLoading(true);
       const matches =
-      process.env.NODE_ENV === "production"
-      ? avatarPath.match(/\/assets\/([^-\s]+-[^-\s]+)(?=-)/)
-      : avatarPath.match(/\/([^/]+)\.[^.]+$/);
-      console.log({ matches });
+        process.env.NODE_ENV === "production"
+          ? avatarPath.match(/\/assets\/(.*?)\-/)
+          : avatarPath.match(/\/([^/]+)\.[^.]+$/);
       if (!matches || !loggedUser) return;
       const avatarName = matches[1];
       await userService.updateAvatar(loggedUser, avatarName);
       dispatch(updateUserAvatar(avatarName));
+      setIsLoading(false);
+      toastMsg("Avatar updated successfully!");
     } catch (err) {
-      console.log(err);
+      isLoading && setIsLoading(false);
+      console.error(err);
+      toastMsg("Failed to update avatar", true);
     }
   };
 
   return (
     <div className="avatars-shop-main-container">
+      {isLoading && <AppLoader />}
       <header className="avatars-shop-header-container">
         <h1>Purchase your avatars</h1>
       </header>

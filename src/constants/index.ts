@@ -81,8 +81,6 @@ export const AVATARS_LIST: { [key: string]: string[] } = {
 };
 
 export const SPECIAL_CHARS_REGEX = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-export const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-export const YOUTUBE_API_KEY_2 = import.meta.env.VITE_YOUTUBE_API_KEY_BACKUP;
 export const YOUTUBE_SEARCH_URL =
   "https://www.googleapis.com/youtube/v3/search";
 export const YOUTUBE_INFO_URL =
@@ -92,3 +90,14 @@ export const YOUTUBE_INFO_URL =
 // videoDuration = short - 4mins video duration and below
 export const YOUTUBE_API_PARAMS =
   "order=relevance&type=video&videoCategoryId=10&videoDuration=short&part=snippet";
+
+const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+const YOUTUBE_API_KEY_2 = import.meta.env.VITE_YOUTUBE_API_KEY_2;
+const YOUTUBE_API_KEY_3 = import.meta.env.VITE_YOUTUBE_API_KEY_3;
+const YOUTUBE_API_KEY_4 = import.meta.env.VITE_YOUTUBE_API_KEY_4;
+export const YOUTUBE_API_KEYS = [
+  YOUTUBE_API_KEY,
+  YOUTUBE_API_KEY_2,
+  YOUTUBE_API_KEY_3,
+  YOUTUBE_API_KEY_4,
+];

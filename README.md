@@ -12,4 +12,4 @@ Deployed app link: https://novamusic.netlify.app/
 
 ## About
 
-Project was build with React, Typescript, SCSS, Socket.io, Node.js, Express.js, MongoDB, Nodemailer, JWT.
+Project was built with React, Typescript, SCSS, Socket.io, Node.js, Express.js, MongoDB, Nodemailer, JWT.

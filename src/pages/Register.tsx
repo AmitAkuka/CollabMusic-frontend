@@ -33,7 +33,7 @@ export const Register = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email Adress*"
+            placeholder="Email Address*"
             required
           />
           <input

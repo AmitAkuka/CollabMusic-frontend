@@ -55,11 +55,11 @@
     overflow-y: auto;
     & > .main-message-container {
       gap: 10px;
-      // & > .message-container {
-      //   & > p {
-      //     line-break: anywhere;
-      //   }
-      // }
+      & > .message-container {
+        & > p {
+          word-break: break-word;
+        }
+      }
     }
     & > .end-msg {
       padding-top: 15px;

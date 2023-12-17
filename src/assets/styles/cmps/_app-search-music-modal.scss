@@ -104,14 +104,14 @@
           bottom: 50px;
           border: none;
           outline: none;
-          padding: 10px 15px;
+          padding: 18px 15px;
           border-radius: 5px;
-          color: white;
-          font-size: 1rem;
+          color: #fff;
+          font-size: 1.2rem;
           left: calc(50% + 15px);
           width: 200px;
-          box-shadow: 0 0 3px 1px black;
-          background: linear-gradient(to bottom, #24b7fb, #338eff, #2147ff);
+          box-shadow: 0 0 20px 3px #000;
+          background: purple;
         }
       }
     }

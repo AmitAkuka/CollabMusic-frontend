@@ -11,7 +11,8 @@ let currentUsedApiKeyIdx = 0;
 
 const onReqYoutubeData = async (
   filterBy: string,
-  nextPageToken: string = ""
+  nextPageToken: string = "",
+  maxRetries: number = 3
 ) => {
   try {
     const { data } = await axios.get(
@@ -22,10 +23,14 @@ const onReqYoutubeData = async (
     return { videos: normalizedData, nextPageToken: nextToken };
   } catch (err) {
     const errMsg = getErrorMessage(err);
-    if (errMsg.indexOf("exceeded") >= 0) {
+    if (errMsg.indexOf("exceeded") >= 0 && maxRetries > 0) {
       currentUsedApiKeyIdx =
         (currentUsedApiKeyIdx + 1) % YOUTUBE_API_KEYS.length;
-      const data: YoutubeData = await onReqYoutubeData(filterBy, nextPageToken);
+      const data: YoutubeData = await onReqYoutubeData(
+        filterBy,
+        nextPageToken,
+        maxRetries
+      );
       return data;
     }
     throw err;

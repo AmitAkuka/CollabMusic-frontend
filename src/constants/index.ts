@@ -81,6 +81,8 @@ export const AVATARS_LIST: { [key: string]: string[] } = {
 };
 
 export const SPECIAL_CHARS_REGEX = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+export const YOUTUBE_ISRAEL_MUSIC_TRENDING =
+  "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=IL&videoCategoryId=10&maxResults=50";
 export const YOUTUBE_SEARCH_URL =
   "https://www.googleapis.com/youtube/v3/search";
 export const YOUTUBE_INFO_URL =
@@ -89,7 +91,7 @@ export const YOUTUBE_INFO_URL =
 // videoCategoryId = 10 - music only
 // videoDuration = short - 4mins video duration and below
 export const YOUTUBE_API_PARAMS =
-  "order=relevance&type=video&videoCategoryId=10&videoDuration=short&part=snippet";
+  "order=relevance&type=video&videoCategoryId=10&videoDuration=short&part=snippet&maxResults=50";
 
 const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const YOUTUBE_API_KEY_2 = import.meta.env.VITE_YOUTUBE_API_KEY_2;

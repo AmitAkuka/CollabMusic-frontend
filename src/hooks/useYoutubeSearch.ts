@@ -13,6 +13,7 @@ export const useYoutubeSearch = () => {
         filterBy,
         nextPageToken
       );
+      console.log({ settingData: data });
 
       !youtubeData
         ? setYoutubeData(data)
@@ -26,7 +27,11 @@ export const useYoutubeSearch = () => {
   };
 
   useEffect(() => {
-    if (!filterBy) return;
+    if (!filterBy) {
+      //Initial query for trending music in israel
+      queryYoutubeData();
+      return;
+    }
     timeoutRef.current = setTimeout(() => {
       //On filter change - clear old youtube data
       setYoutubeData(null);

@@ -18,8 +18,11 @@ export const AppSearchMusicModal = ({
   const { queryYoutubeData, setFilterBy, youtubeData } = useYoutubeSearch();
   const scrollElementRef = useRef<HTMLDivElement | null>(null);
 
-  const handleFilterChange = (input: string) => {
-    setFilterBy(input);
+  const handleFilterChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const inputValue = (event.target as HTMLInputElement).value;
+      setFilterBy(inputValue);
+    }
   };
 
   const getScrollElement = () => scrollElementRef.current;
@@ -34,12 +37,14 @@ export const AppSearchMusicModal = ({
       </header>
       <section className="main-input-container">
         <div className="input-container">
-          <SearchIcon />
           <input
             type="text"
             placeholder="Search music here..."
-            onChange={({ target }) => handleFilterChange(target.value)}
+            onKeyDown={(ev) => handleFilterChange(ev)}
           />
+          <button>
+            <SearchIcon />
+          </button>
         </div>
       </section>
       {youtubeData && (
@@ -48,7 +53,7 @@ export const AppSearchMusicModal = ({
             className="infinite-scroll-container"
             pageStart={1}
             loadMore={(page) => {
-              if (page > 2) return;
+              if (page > 2 || !youtubeData.nextPageToken.length) return;
               queryYoutubeData(youtubeData.nextPageToken, page);
             }}
             hasMore={!!youtubeData.nextPageToken.length}

@@ -2,6 +2,7 @@ import {
   YOUTUBE_API_KEYS,
   YOUTUBE_API_PARAMS,
   YOUTUBE_INFO_URL,
+  YOUTUBE_ISRAEL_MUSIC_TRENDING,
   YOUTUBE_SEARCH_URL,
 } from "@/constants";
 import { PureYoutubeData, Video, YoutubeData } from "@/types";
@@ -12,13 +13,19 @@ let currentUsedApiKeyIdx = 0;
 const onReqYoutubeData = async (
   filterBy: string,
   nextPageToken: string = "",
-  maxRetries: number = 3
+  maxRetries: number = 2
 ) => {
   try {
+    const requestUrl = filterBy.length
+      ? `${YOUTUBE_SEARCH_URL}?q=${filterBy}&${YOUTUBE_API_PARAMS}&pageToken=${nextPageToken}`
+      : YOUTUBE_ISRAEL_MUSIC_TRENDING;
     const { data } = await axios.get(
-      `${YOUTUBE_SEARCH_URL}?q=${filterBy}&${YOUTUBE_API_PARAMS}&key=${YOUTUBE_API_KEYS[currentUsedApiKeyIdx]}&pageToken=${nextPageToken}`
+      `${requestUrl}&key=${YOUTUBE_API_KEYS[currentUsedApiKeyIdx]}`
     );
+    console.log({ data });
     const normalizedData: Video[] = _normalizeData(data.items);
+    console.log({ normalizedData });
+
     const nextToken = data?.nextPageToken ? data.nextPageToken : "";
     return { videos: normalizedData, nextPageToken: nextToken };
   } catch (err) {
@@ -61,9 +68,11 @@ const _normalizeData = (data: PureYoutubeData[]) => {
   return data
     .map((d) => {
       const {
-        id: { videoId },
+        id,
         snippet: { title, channelTitle, thumbnails },
       } = d;
+      //Trending videos will return their id inside id main object and not inside id.videoId.
+      const videoId = id?.videoId || id;
       //Sometimes youtube API returning channels and not actuall video
       //in results. A channel wont contain a videoId.
       if (!videoId) return null;

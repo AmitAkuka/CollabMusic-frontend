@@ -1,6 +1,7 @@
 import { Video } from "@/types";
 import { VideoPreview } from "./VideoPreview";
 import { useState } from "react";
+import AlbumIcon from "@mui/icons-material/Album";
 
 type Props = {
   videos: Video[];
@@ -22,7 +23,8 @@ export const VideoList = ({ videos, handleVideoSubmit }: Props) => {
       ))}
       {selectedVideo && (
         <button onClick={() => handleVideoSubmit(selectedVideo)}>
-          Confirm Selection
+          <AlbumIcon />
+          Join Queue!
         </button>
       )}
     </div>

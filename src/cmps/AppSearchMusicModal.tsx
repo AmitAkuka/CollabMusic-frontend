@@ -3,7 +3,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SearchIcon from "@mui/icons-material/Search";
 import { VideoList } from "./VideoList";
 import InfiniteScroll from "react-infinite-scroller";
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 import { Video } from "@/types";
 
 type Props = {
@@ -18,11 +18,12 @@ export const AppSearchMusicModal = ({
   const { queryYoutubeData, setFilterBy, youtubeData } = useYoutubeSearch();
   const scrollElementRef = useRef<HTMLDivElement | null>(null);
 
-  const handleFilterChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      const inputValue = (event.target as HTMLInputElement).value;
-      setFilterBy(inputValue);
-    }
+  const handleFilterSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const inputElement = event.currentTarget[0];
+    const inputValue = (inputElement as HTMLInputElement).value;
+    if (!inputValue.length) return;
+    setFilterBy(inputValue);
   };
 
   const getScrollElement = () => scrollElementRef.current;
@@ -35,37 +36,39 @@ export const AppSearchMusicModal = ({
         />
         <h1>Search Music</h1>
       </header>
-      <section className="main-input-container">
+      <form
+        className="main-input-container"
+        onSubmit={(event) => handleFilterSubmit(event)}
+      >
         <div className="input-container">
-          <input
-            type="text"
-            placeholder="Search music here..."
-            onKeyDown={(ev) => handleFilterChange(ev)}
-          />
-          <button>
+          <input type="text" placeholder="Search music here..." />
+          <button type="submit">
             <SearchIcon />
           </button>
         </div>
-      </section>
+      </form>
       {youtubeData && (
         <div ref={scrollElementRef} className="search-result-container">
-          <InfiniteScroll
-            className="infinite-scroll-container"
-            pageStart={1}
-            loadMore={(page) => {
-              if (page > 2 || !youtubeData.nextPageToken.length) return;
-              queryYoutubeData(youtubeData.nextPageToken, page);
-            }}
-            hasMore={!!youtubeData.nextPageToken.length}
-            loader={<h1 key={0}>Loading...</h1>}
-            useWindow={false}
-            getScrollParent={getScrollElement}
-          >
-            <VideoList
-              videos={youtubeData.videos}
-              handleVideoSubmit={handleVideoSubmit}
-            />
-          </InfiniteScroll>
+          {!youtubeData.videos.length && <h2>No results found</h2>}
+          {!!youtubeData.videos.length && (
+            <InfiniteScroll
+              className="infinite-scroll-container"
+              pageStart={1}
+              loadMore={(page) => {
+                if (page > 2 || !youtubeData.nextPageToken.length) return;
+                queryYoutubeData(youtubeData.nextPageToken, page);
+              }}
+              hasMore={!!youtubeData.nextPageToken.length}
+              loader={<h1 key={0}>Loading...</h1>}
+              useWindow={false}
+              getScrollParent={getScrollElement}
+            >
+              <VideoList
+                videos={youtubeData.videos}
+                handleVideoSubmit={handleVideoSubmit}
+              />
+            </InfiniteScroll>
+          )}
         </div>
       )}
     </section>

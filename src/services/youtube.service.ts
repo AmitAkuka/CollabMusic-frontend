@@ -22,9 +22,7 @@ const onReqYoutubeData = async (
     const { data } = await axios.get(
       `${requestUrl}&key=${YOUTUBE_API_KEYS[currentUsedApiKeyIdx]}`
     );
-    console.log({ data });
     const normalizedData: Video[] = _normalizeData(data.items);
-    console.log({ normalizedData });
 
     const nextToken = data?.nextPageToken ? data.nextPageToken : "";
     return { videos: normalizedData, nextPageToken: nextToken };

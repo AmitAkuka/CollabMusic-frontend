@@ -13,7 +13,6 @@ export const useYoutubeSearch = () => {
         filterBy,
         nextPageToken
       );
-      console.log({ settingData: data });
 
       !youtubeData
         ? setYoutubeData(data)
